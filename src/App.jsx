@@ -5,6 +5,12 @@ const randomIndex = (n) => {
   return Math.floor(Math.random() * n)
 }
 
+ const getRandomKana = (kanaType) => {
+    const kanaList = KANA[kanaType]
+    const randomKana = kanaList[randomIndex(kanaList.length)]
+    return randomKana
+  }
+
 function App() {
   const [kanaType, setKanaType] = useState('hiragana')
   const [currentKana, setCurrentKana] = useState(null)
@@ -12,29 +18,26 @@ function App() {
   const [feedback, setFeedback] = useState(null)
 
   useEffect(() => {
-    getRandomKana()
-  }, [kanaType])
-
-  const getRandomKana = () => {
-    const kanaList = KANA[kanaType]
-    const randomKana = kanaList[randomIndex(kanaList.length)]
+    const randomKana = getRandomKana(kanaType)
     setCurrentKana(randomKana)
     setUserInput('')
-  }
+  }, [kanaType])
 
   const checkAnswer = (event) => {
     event.preventDefault()
     if (currentKana.romaji.includes(userInput.toLowerCase())) {
       setFeedback('⭕️ Correct!')
       setTimeout(() => {
+        setUserInput('')
         setFeedback(null)
-        getRandomKana()
+        setCurrentKana(getRandomKana(kanaType))
       }, 1000)
     } else {
       setFeedback(`❌ Incorrect! The correct answer is: ${currentKana.romaji[0]}`)
       setTimeout(() => {
+        setUserInput('')
         setFeedback(null)
-        getRandomKana()
+        setCurrentKana(getRandomKana(kanaType))
       }, 1000)
     }
   }
