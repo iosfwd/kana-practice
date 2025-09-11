@@ -47,7 +47,7 @@ function App() {
   }
 
   return (
-    <>
+    <div style={{ maxWidth: '720px', margin: '0 auto', padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <h1>Kana Practice</h1>
       <div>
         <label>
@@ -69,21 +69,20 @@ function App() {
           Katakana
         </label>
       </div>
-      {currentKana && (
-        <div style={{ fontSize: '100px', marginTop: '20px' }}>
-          {currentKana.kana}
+        <div style={{ fontSize: '96px', textAlign: 'center', lineHeight: '1.1', margin: '8px 0 16px' }}>
+          {currentKana?.kana}
         </div>
-      )}  
       <form onSubmit={checkAnswer}>
         <input
           type="text"
           value={userInput}
           onChange={handleInputChange}
           autoFocus
+          style={{ fontSize: '24px', padding : '10px 14px', border: '2px solid #ddd', borderRadius: '12px', outline: 'none', textAlign: 'center' }}
         />
       </form>
       <div>{feedback}</div>
-    </>
+    </div>
   )
 }
 
