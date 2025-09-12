@@ -96,10 +96,23 @@ export const KATAKANA = [
   { kana: 'ン', romaji: ['n', 'm'] },
 ]
 
+export const KANA_LAYOUT = [
+    ['a','i','u','e','o'],
+    ['ka','ki','ku','ke','ko'],
+    ['sa','shi','su','se','so'],
+    ['ta','chi','tsu','te','to'],
+    ['na','ni','nu','ne','no'],
+    ['ha','hi','fu','he','ho'],
+    ['ma','mi','mu','me','mo'],
+    ['ya','','yu','','yo'],
+    ['ra','ri','ru','re','ro'],
+    ['wa','','','','wo'],
+    ['n','','','','']
+]
+
 export const KANA = {
   hiragana: HIRAGANA,
   katakana: KATAKANA,
-  both: [...HIRAGANA, ...KATAKANA],
 }
 
-export default KANA
+export default { KANA, KANA_LAYOUT }
