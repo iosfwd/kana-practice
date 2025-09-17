@@ -3,6 +3,7 @@ import { KANA, KANA_LAYOUT } from './data/kana.js'
 import KanaTable from './components/KanaTable'
 import KanaPractice from './components/KanaPractice'
 import Controls from './components/Controls'
+import KanaDraw from './components/KanaDraw'
 
 const randomIndex = (n) => Math.floor(Math.random() * n)
 const getRandomKana = (kanaList) => kanaList[randomIndex(kanaList.length)]
@@ -60,13 +61,17 @@ function App() {
         />
       )}
 
-      <KanaPractice
-        currentKana={currentKana}
-        userInput={userInput}
-        setUserInput={setUserInput}
-        feedback={feedback}
-        checkAnswer={checkAnswer}
-      />
+      {mode === 'recognition' ? (
+        <KanaPractice
+          currentKana={currentKana}
+          userInput={userInput}
+          setUserInput={setUserInput}
+          feedback={feedback}
+          checkAnswer={checkAnswer}
+        />
+      ) : (
+        <KanaDraw currentKana={currentKana} />
+      )}
     </div>
   )
 }

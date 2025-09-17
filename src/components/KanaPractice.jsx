@@ -14,7 +14,7 @@ function KanaPractice({ currentKana, userInput, setUserInput, feedback, checkAns
           borderRadius: '12px',
           padding: '20px',
           backgroundColor: '#fafafa',
-          width: '200px'
+          width: '200px',
         }}
       >
         {currentKana?.kana}
