@@ -14,6 +14,7 @@ function App() {
   const [feedback, setFeedback] = useState(null)
   const [selectedKana, setSelectedKana] = useState([])
   const [showTable, setShowTable] = useState(false)
+  const [mode, setMode] = useState('recognition')
 
   useEffect(() => {
     const activeList = selectedKana.length > 0 ? selectedKana : KANA[kanaType]
@@ -45,6 +46,8 @@ function App() {
         setKanaType={setKanaType}
         showTable={showTable}
         setShowTable={setShowTable}
+        mode={mode}
+        setMode={setMode}
       />
 
       {showTable && (
