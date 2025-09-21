@@ -1,9 +1,11 @@
 import { useState, useRef } from 'react'
 import { Stage, Layer, Line } from 'react-konva';
+import KanaDisplay from './KanaDisplay'
 
 function KanaWrite({ currentKana }) {
   const [lines, setLines] = useState([])
   const isDrawing = useRef(false)
+  const [showAnswer, setShowAnswer] = useState(false)
 
   const handleMouseDown = (e) => {
     isDrawing.current = true
@@ -67,6 +69,16 @@ function KanaWrite({ currentKana }) {
       </div>
       <div>
         Write <strong>{currentKana?.romaji[0]}</strong>
+      </div>
+
+      <div style={{ marginTop: '12px' }}>
+        <button onClick={() => { setShowAnswer(!showAnswer) }}>
+          {showAnswer ? 'Hide Answer' : 'Show Answer'}
+        </button>
+        {
+          showAnswer &&
+            <KanaDisplay currentKana={currentKana} />
+        }
       </div>
     </div>
   )
