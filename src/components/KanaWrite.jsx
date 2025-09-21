@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { Stage, Layer, Line } from 'react-konva';
 
-function KanaDraw({ currentKana }) {
+function KanaWrite({ currentKana }) {
   const [lines, setLines] = useState([])
   const isDrawing = useRef(false)
 
@@ -66,10 +66,10 @@ function KanaDraw({ currentKana }) {
 
       </div>
       <div>
-        Draw {currentKana?.romaji[0]}
+        Write <strong>{currentKana?.romaji[0]}</strong>
       </div>
     </div>
   )
 }
 
-export default KanaDraw
+export default KanaWrite

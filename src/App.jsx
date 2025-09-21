@@ -3,7 +3,7 @@ import { KANA, KANA_LAYOUT } from './data/kana.js'
 import KanaTable from './components/KanaTable'
 import KanaPractice from './components/KanaPractice'
 import Controls from './components/Controls'
-import KanaDraw from './components/KanaDraw'
+import KanaWrite from './components/KanaWrite'
 
 const randomIndex = (n) => Math.floor(Math.random() * n)
 const getRandomKana = (kanaList) => kanaList[randomIndex(kanaList.length)]
@@ -70,7 +70,7 @@ function App() {
           checkAnswer={checkAnswer}
         />
       ) : (
-        <KanaDraw currentKana={currentKana} />
+        <KanaWrite currentKana={currentKana} />
       )}
     </div>
   )
