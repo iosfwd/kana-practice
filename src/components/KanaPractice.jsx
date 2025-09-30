@@ -1,6 +1,9 @@
+import { useId } from 'react'
 import KanaDisplay from './KanaDisplay'
 
 function KanaPractice({ currentKana, userInput, setUserInput, feedback, checkAnswer }) {
+  const kanaPracticeId = useId()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     checkAnswer(userInput)
@@ -24,6 +27,7 @@ function KanaPractice({ currentKana, userInput, setUserInput, feedback, checkAns
             textAlign: 'center',
             width: '200px'
           }}
+          id={kanaPracticeId}
         />
       </form>
 

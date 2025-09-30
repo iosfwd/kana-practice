@@ -70,7 +70,11 @@ function App() {
           checkAnswer={checkAnswer}
         />
       ) : (
-        <KanaWrite currentKana={currentKana} />
+        <KanaWrite currentKana={currentKana}
+                   setCurrentKana={setCurrentKana}
+                   selectedKana={selectedKana}
+                   kanaType={kanaType}
+        />
       )}
     </div>
   )

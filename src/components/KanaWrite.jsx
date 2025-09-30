@@ -1,8 +1,12 @@
 import { useState, useRef } from 'react'
 import { Stage, Layer, Line } from 'react-konva';
 import KanaDisplay from './KanaDisplay'
+import { KANA, KANA_LAYOUT } from '../data/kana.js'
 
-function KanaWrite({ currentKana }) {
+const randomIndex = (n) => Math.floor(Math.random() * n)
+const getRandomKana = (kanaList) => kanaList[randomIndex(kanaList.length)]
+
+function KanaWrite({ currentKana, setCurrentKana, selectedKana, kanaType }) {
   const [lines, setLines] = useState([])
   const isDrawing = useRef(false)
   const [showAnswer, setShowAnswer] = useState(false)
@@ -27,6 +31,12 @@ function KanaWrite({ currentKana }) {
 
   const handleMouseUp = () => {
     isDrawing.current = false;
+  }
+
+  const nextKana = () => {
+    const activeList = selectedKana.length > 0 ? selectedKana : KANA[kanaType]
+    setShowAnswer(false)
+    setCurrentKana(getRandomKana(activeList))
   }
 
   return (
@@ -79,6 +89,10 @@ function KanaWrite({ currentKana }) {
           showAnswer &&
             <KanaDisplay currentKana={currentKana} />
         }
+        <button onClick={() => nextKana()}>
+          {'Next'}
+        </button>
+
       </div>
     </div>
   )
