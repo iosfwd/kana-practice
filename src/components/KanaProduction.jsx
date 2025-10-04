@@ -1,12 +1,8 @@
 import { useState, useRef } from 'react'
 import { Stage, Layer, Line } from 'react-konva';
 import KanaDisplay from './KanaDisplay'
-import { KANA, KANA_LAYOUT } from '../data/kana.js'
 
-const randomIndex = (n) => Math.floor(Math.random() * n)
-const getRandomKana = (kanaList) => kanaList[randomIndex(kanaList.length)]
-
-function KanaWrite({ currentKana, setCurrentKana, selectedKana, kanaType }) {
+const KanaProduction = ({ currentKana, nextKana }) => {
   const [lines, setLines] = useState([])
   const isDrawing = useRef(false)
   const [showAnswer, setShowAnswer] = useState(false)
@@ -31,12 +27,6 @@ function KanaWrite({ currentKana, setCurrentKana, selectedKana, kanaType }) {
 
   const handleMouseUp = () => {
     isDrawing.current = false;
-  }
-
-  const nextKana = () => {
-    const activeList = selectedKana.length > 0 ? selectedKana : KANA[kanaType]
-    setShowAnswer(false)
-    setCurrentKana(getRandomKana(activeList))
   }
 
   return (
@@ -89,7 +79,11 @@ function KanaWrite({ currentKana, setCurrentKana, selectedKana, kanaType }) {
           showAnswer &&
             <KanaDisplay currentKana={currentKana} />
         }
-        <button onClick={() => nextKana()}>
+        <button onClick={() => {
+                  nextKana()
+                  setShowAnswer(false)
+                  setLines([])
+                }}>
           {'Next'}
         </button>
 
@@ -98,4 +92,4 @@ function KanaWrite({ currentKana, setCurrentKana, selectedKana, kanaType }) {
   )
 }
 
-export default KanaWrite
+export default KanaProduction
