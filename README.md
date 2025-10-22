@@ -6,12 +6,12 @@ Currently supports:
 
 - Recognition (type corresponding romaji from kana)
 
-!(/images/recognition.png)
+![Screenshot of kana recognition feature.](/images/recognition.png)
 
 - Production (draw corresponding kana from romaji)
 
-!(/images/production.png)
+![Screenshot of kana production feature.](/images/production.png)
 
 - Selecting a subset of hiragana and katakana to practice
 
-!(/images/subset.png)
+![Screenshot of subset selection feature.](/images/subset.png)
